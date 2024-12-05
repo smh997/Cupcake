@@ -6,8 +6,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
+import com.example.cupcake.CupcakeScreen
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 
 @get:Rule
 val composeTestRule = createAndroidComposeRule<ComponentActivity>()
@@ -22,4 +25,9 @@ fun setupCupcakeNavHost(){
         }
         CupcakeApp(navController = navController)
     }
+}
+
+@Test
+fun cupcakeNavHost_verifyStartDestination(){
+    navController.assertCurrentRouteName(CupcakeScreen.Start.name)
 }
